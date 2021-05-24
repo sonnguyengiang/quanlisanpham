@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h3>Add New Product</h3>
+<input type="text" id="nhap"> <button type="button" onclick="them()">new</button>
+<h3>Display All Product</h3>
+<table id="hienthi">
+
+</table>
+<script>
+  var arr = ['Sony Xperia', 'Samsung galaxy', 'Xiaomi Redmi Not9','Iphone 6']
+  hienthi();
+
+  function hienthi() {
+    let str = '';
+    str += "<tr>\n" +
+            "    <td colspan=\"2\">ProductNames</td>\n" +
+            "    <td>" + arr.length + " products</td>\n" +
+            "</tr>"
+    for (let i = 0; i < arr.length; i++) {
+      str += "    <tr>\n" +
+              "        <td>" + arr[i] + "</td>\n" +
+              "        <td><button onclick='edit(" + i + ")'>Edit</button></td>\n" +
+              "        <td><button onclick='xoa(" + i + ")'>Delete</button></td>\n" +
+              "    </tr>"
+    }
+    document.getElementById('hienthi').innerHTML = str;
+  }
+  function them() {
+    let x = document.getElementById("nhap").value;
+    arr.push(x);
+    hienthi();
+  }
+  function edit(ViTri) {
+    let moi = prompt("nội dung cần đổi");
+    arr[ViTri] = moi;
+    hienthi();
+  }
+  function xoa(ViTri) {
+    arr.splice(ViTri,1);
+    hienthi();
+  }
+</script>
+</body>
+</html>
